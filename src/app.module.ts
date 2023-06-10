@@ -19,10 +19,9 @@ import { UsersModule } from './users/users.module';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync(PostgresSqlConnection),
     AuthModule,
-    KeycloakModule,
     KeycloakConnectModule.registerAsync({
       useExisting: KeycloakConfigService,
-      imports: [ConfigModule],
+      imports: [KeycloakModule],
     }),
     UsersModule,
   ],
