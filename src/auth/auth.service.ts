@@ -1,26 +1,28 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import axios, { AxiosError } from 'axios';
+import { AuthLoginDto } from './dto/login.auth.dto';
 
 @Injectable()
 export class AuthService {
-  create(createAuthDto: CreateAuthDto) {
-    return 'This action adds a new auth';
-  }
-
-  findAll() {
-    return `This action returns all auth`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} auth`;
-  }
-
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
+  async login(dto: AuthLoginDto) {
+    try {
+      const result = await axios.post(
+        `${process.env.KEYCLOAK_URL}/realms/${process.env.KEYCLOAK_REALM}/protocol/openid-connect/token`,
+        {
+          ...dto,
+          grant_type: 'password',
+          client_id: `${process.env.KEYCLOAK_CLIENT_ID}`,
+          client_secret: `${process.env.KEYCLOAK_SECRET}`,
+          scope: 'openid',
+        },
+        {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        },
+      );
+      return result.data;
+    } catch (error) {
+      const err = error as AxiosError;
+      return { message: err.message };
+    }
   }
 }

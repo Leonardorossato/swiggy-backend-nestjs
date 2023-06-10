@@ -11,7 +11,7 @@ export class KeycloakConfigService implements KeycloakConnectOptionsFactory {
   createKeycloakConnectOptions(): KeycloakConnectOptions {
     return {
       authServerUrl: process.env.KEYCLOAK_URL,
-      realm: 'master',
+      realm: process.env.KEYCLOAK_REALM,
       clientId: process.env.KEYCLOAK_CLIENT_ID,
       secret: process.env.KEYCLOAK_SECRET,
       policyEnforcement: PolicyEnforcementMode.PERMISSIVE,
