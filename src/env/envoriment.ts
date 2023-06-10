@@ -11,6 +11,9 @@ declare global {
       DB_DATABASE: string;
       DB_USERNAME: string;
       DB_PASSWORD: string;
+      KEYCLOAK_CLIENT_ID: string;
+      KEYCLOAK_SECRET: string;
+      KEYCLOAK_URL: string;
     }
   }
 }
