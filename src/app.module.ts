@@ -12,6 +12,7 @@ import {
 } from 'nest-keycloak-connect';
 import { KeycloakConfigService } from './keycloak/keycloak.service';
 import { APP_GUARD } from '@nestjs/core';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { APP_GUARD } from '@nestjs/core';
       useExisting: KeycloakConfigService,
       imports: [ConfigModule],
     }),
+    UsersModule,
   ],
   providers: [
     {
