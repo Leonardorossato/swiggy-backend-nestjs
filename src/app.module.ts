@@ -22,6 +22,7 @@ import { RestaurantModule } from './restaurant/restaurant.module';
 import { MenuModule } from './menu/menu.module';
 import { CartModule } from './cart/cart.module';
 import { PaymentModule } from './payment/payment.module';
+import { OrderModule } from './order/order.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync(PostgresSqlConnection),
@@ -40,6 +41,7 @@ import { PaymentModule } from './payment/payment.module';
     MenuModule,
     CartModule,
     PaymentModule,
+    OrderModule,
   ],
   providers: [
     {
