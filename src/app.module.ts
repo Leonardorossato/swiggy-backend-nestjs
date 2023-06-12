@@ -13,15 +13,16 @@ import {
 import { KeycloakConfigService } from './keycloak/keycloak.service';
 import { APP_GUARD } from '@nestjs/core';
 import { UsersModule } from './users/users.module';
-
+import { RequestContextModule } from 'nestjs-request-context';
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync(PostgresSqlConnection),
+    ConfigModule.forRoot({ isGlobal: true }),
     AuthModule,
+    KeycloakModule,
     KeycloakConnectModule.registerAsync({
       useExisting: KeycloakConfigService,
-      imports: [KeycloakModule],
+      imports: [KeycloakModule, RequestContextModule],
     }),
     UsersModule,
   ],
