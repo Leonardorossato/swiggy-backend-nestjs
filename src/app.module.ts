@@ -20,6 +20,7 @@ import { DevliveryModule } from './devlivery/devlivery.module';
 import { BillModule } from './bill/bill.module';
 import { RestaurantModule } from './restaurant/restaurant.module';
 import { MenuModule } from './menu/menu.module';
+import { CartModule } from './cart/cart.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync(PostgresSqlConnection),
@@ -36,6 +37,7 @@ import { MenuModule } from './menu/menu.module';
     BillModule,
     RestaurantModule,
     MenuModule,
+    CartModule,
   ],
   providers: [
     {
