@@ -23,6 +23,7 @@ import { MenuModule } from './menu/menu.module';
 import { CartModule } from './cart/cart.module';
 import { PaymentModule } from './payment/payment.module';
 import { OrderModule } from './order/order.module';
+import { NotificationModule } from './notification/notification.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync(PostgresSqlConnection),
@@ -42,6 +43,7 @@ import { OrderModule } from './order/order.module';
     CartModule,
     PaymentModule,
     OrderModule,
+    NotificationModule,
   ],
   providers: [
     {
