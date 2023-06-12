@@ -15,6 +15,11 @@ import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { UsersModule } from './users/users.module';
 import { RequestContextModule } from 'nestjs-request-context';
 import { RolesInterceptor } from './decorator/keycloak.decorator';
+import { AddressModule } from './address/address.module';
+import { DevliveryModule } from './devlivery/devlivery.module';
+import { BillModule } from './bill/bill.module';
+import { RestaurantModule } from './restaurant/restaurant.module';
+import { MenuModule } from './menu/menu.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync(PostgresSqlConnection),
@@ -26,6 +31,11 @@ import { RolesInterceptor } from './decorator/keycloak.decorator';
       imports: [KeycloakModule, RequestContextModule],
     }),
     UsersModule,
+    AddressModule,
+    DevliveryModule,
+    BillModule,
+    RestaurantModule,
+    MenuModule,
   ],
   providers: [
     {
