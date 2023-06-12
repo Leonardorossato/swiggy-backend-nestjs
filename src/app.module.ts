@@ -16,6 +16,7 @@ import { UsersModule } from './users/users.module';
 import { RequestContextModule } from 'nestjs-request-context';
 import { RolesInterceptor } from './decorator/keycloak.decorator';
 import { AddressModule } from './address/address.module';
+import { DevliveryModule } from './devlivery/devlivery.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync(PostgresSqlConnection),
@@ -28,6 +29,7 @@ import { AddressModule } from './address/address.module';
     }),
     UsersModule,
     AddressModule,
+    DevliveryModule,
   ],
   providers: [
     {
