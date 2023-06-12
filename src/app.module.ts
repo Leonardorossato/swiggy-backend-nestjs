@@ -11,9 +11,10 @@ import {
   RoleGuard,
 } from 'nest-keycloak-connect';
 import { KeycloakConfigService } from './keycloak/keycloak.service';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { UsersModule } from './users/users.module';
 import { RequestContextModule } from 'nestjs-request-context';
+import { RolesInterceptor } from './decorator/keycloak.decorator';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync(PostgresSqlConnection),
@@ -38,6 +39,10 @@ import { RequestContextModule } from 'nestjs-request-context';
     {
       provide: APP_GUARD,
       useClass: RoleGuard,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: RolesInterceptor,
     },
   ],
 })
