@@ -18,6 +18,7 @@ import { RolesInterceptor } from './decorator/keycloak.decorator';
 import { AddressModule } from './address/address.module';
 import { DevliveryModule } from './devlivery/devlivery.module';
 import { BillModule } from './bill/bill.module';
+import { RestaurantModule } from './restaurant/restaurant.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync(PostgresSqlConnection),
@@ -32,6 +33,7 @@ import { BillModule } from './bill/bill.module';
     AddressModule,
     DevliveryModule,
     BillModule,
+    RestaurantModule,
   ],
   providers: [
     {
